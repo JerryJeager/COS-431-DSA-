@@ -1,10 +1,11 @@
+import java.util.stream.IntStream;
+
 public class Search {
     public static void main(String[] args) {
-        int nums[] = new int[100000];
+        int nums[] = IntStream.range(0, 1000).toArray();
         int target = 11;
 
         int result = BinarySearch(nums, target);
-        int result2 = linearSearch(nums, target);
 
         if (result != -1) {
             System.out.println("Element found at index: " + result);
@@ -30,9 +31,11 @@ public class Search {
         int steps = 0;
         int left = 0;
         int right = nums.length - 1;
+        int mid;
+        
         while (left <= right) {
             steps++;
-            int mid = (left + right) / 2;
+            mid = (left + right) / 2;
             if (nums[mid] == target) {
                 System.out.println("Steps taken by Binary: " + steps);
                 return mid;
